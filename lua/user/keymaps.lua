@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -9,6 +8,13 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- Remap Q to format/break lines of current paragraph
+keymap("n", "Q", "gq", opts)
+
+-- Remap Ctrl-S to Save
+keymap("n", "<C-s>", ":w<CR>", opts)
+keymap("i", "<C-s>", "<Esc>:w<CR>a", opts)
 
 -- Modes
 --   normal_mode = "n",
@@ -36,10 +42,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
